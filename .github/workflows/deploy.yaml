@@ -20,10 +20,10 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
 
     - name: Build image
-      run: docker build -t gamemaster007/k8s-cicd-demo:v1 .
+      run: docker build -t gamemaster007/k8s-cicd-demo:v3 .
 
     - name: Push image
-      run: docker push gamemaster007/k8s-cicd-demo:v1
+      run: docker push gamemaster007/k8s-cicd-demo:v3
 
     - name: Setup kubeconfig
       run: |
@@ -32,4 +32,4 @@ jobs:
 
     - name: Deploy to Kubernetes
       run: |
-        kubectl set image deployment/k8s-cicd-demo app=gamemaster007/k8s-cicd-demo:v1
+        kubectl set image deployment/k8s-cicd-demo app=gamemaster007/k8s-cicd-demo:v3
